@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+SVS User Register
+{% endblock %}
+{%block page_content%}
+
+
+<!--<form action="" method="post">
+    <p>Please enter your Email:-
+        <input type="text" name="txtemail"></p>
+    <p>Please enter your password:-
+        <input type="password" name="txtpass1"></p>
+    <p>Please re-enter your password:-
+        <input type="password" name="txtpass2"></p>
+    <p>
+        Please enter your FirstName:
+        <input type="text" name="txtfname"></p>
+    <p>
+        Please enter your LastName:
+        <input type="text" name="txtlname"></p>
+    <p>
+        <button type="submit">Register</button></p>
+
+</form>-->
+<div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+</div>
+
+{%endblock%}
+

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+{% block title %}
+SVS Live Photo capture Result.
+{% endblock %}
+{%block page_content%}
+<article>
+    <h1>Your Live Face Detect Photo are loding here </h1>
+<h2>List User here:</h2>
+
+  {% for face in allface %}
+<li class="lead">
+
+
+      <li>{{ face.cam_id }}
+      <li>{{ moment(face.Face_save_date).fromNow() }}
+       <li> <img src="data:;base64,{{ face.Face_imagenew }}"/>
+
+
+</li>
+{% endfor %}
+
+  {% if pagination %}
+    <div class="pagination">
+    {{ macros.pagination_widget(pagination, '.FDViewFaces') }}
+</div>
+{% endif %}
+    </ul>
+
+</article>
+{%endblock%}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+SVS List of all register camera
+{% endblock %}
+{%block page_content%}
+<ul class="lead"><h3>Your Registered Cams List are here:</h3>
+{% for cam in allcam %}
+<li class="lead">
+
+
+    <b>Location of Camera Site:</b>
+<a href="http://maps.google.com/?q={{ cam.sitename}}">{{ cam.sitename }}</a>
+<br>
+
+
+            <b>Camera Viewing Window Size:</b>{{ cam.sview }}<br>
+            <b>When Cam was added:</b>{{ moment(cam.camregdate).fromNow() }}<br>
+            <b>Added By:</b><a href="{{ url_for('main.user', emid=cam.camusername.emid) }}">  {{ cam.camusername.fname }}</a><br>
+
+            {% if cam.FDstore == 1 %}
+            <b>Camera Face Detection Stored:</b>Enabled<br>
+             <b>Start Cap</b><a href="{{ url_for('FD.FDStart') }}"> StartCap</a><br>
+
+            {% else %}
+            <b>Camera Face Detection Stored:</b>Disabled<br>
+            {% endif %}
+            <b>Camera URL:-</b>{{ cam.camurlnew }}<br>
+            <img src="{{ cam.camurlnew }}">
+
+
+            <a class="btn btn-default" href="{{ url_for('.editcams', id = cam.id) }}">Edit Camera</a>
+
+
+    </li>
+{% endfor %}
+</ul>
+{%endblock%}
+
